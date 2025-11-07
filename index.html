@@ -18,6 +18,11 @@
     body {
         font-family: 'Inter', sans-serif;
     }
+    /* Style untuk dropdown yang disabled */
+    select:disabled {
+        background-color: #f3f4f6; /* bg-gray-100 */
+        cursor: not-allowed;
+    }
 </style>
 
 
@@ -40,22 +45,34 @@
     <!-- Formulir Input -->
     <form id="nilaiForm" class="space-y-6">
         
-        <!-- Nama Siswa -->
+        <!-- KELAS (DIUBAH JADI DROPDOWN) -->
+        <div>
+            <label for="kelas" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-gray-400">
+                    <path fill-rule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25ZM5.5 6a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5H6.25a.75.75 0 0 1-.75-.75Zm.75 3.25a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5H6.25Zm-1.5 4a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5H6.25a.75.75 0 0 1-.75-.75Zm4-4a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5h-4.5Zm-.75 3.25a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+                Pilih Kelas
+            </label>
+            <select id="kelas" name="kelas" required
+                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50 transition-colors">
+                <option value="" disabled selected>Pilih kelas terlebih dahulu</option>
+                <option value="X TSM 1">X TSM 1</option>
+                <option value="X TSM 2">X TSM 2</option>
+                <option value="X PSPT">X PSPT</option>
+            </select>
+        </div>
+
+        <!-- Nama Siswa (DINAMIS) -->
         <div>
             <label for="nama" class="flex items-center text-sm font-medium text-gray-700 mb-1">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-gray-400">
                     <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.25 1.25 0 0 0 1.065 2.007h10.94a1.25 1.25 0 0 0 1.065-2.007c-.03-.04-1.29-1.634-1.638-2.138a5.5 5.5 0 1 0-8.864 0c-.347.504-1.607 2.098-1.637 2.138Z" />
                 </svg>
-                Nama Siswa
+                Pilih Nama Siswa
             </label>
-            <select id="nama" name="nama" required
+            <select id="nama" name="nama" required disabled
                    class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50 transition-colors">
-                <option value="" disabled selected>Pilih nama siswa</option>
-                <option value="Budi Santoso">Budi Santoso</option>
-                <option value="Ani Wijaya">Ani Wijaya</option>
-                <option value="Citra Lestari">Citra Lestari</option>
-                <option value="Dewi Anggraini">Dewi Anggraini</option>
-                <option value="Eka Prasetyo">Eka Prasetyo</option>
+                <option value="" disabled selected>Pilih kelas terlebih dahulu</toPilih>
             </select>
         </div>
 
@@ -77,7 +94,7 @@
             <label for="jenis" class="flex items-center text-sm font-medium text-gray-700 mb-1">
                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-gray-400">
                     <path d="M3.5 3A1.5 1.5 0 0 0 2 4.5v11A1.5 1.5 0 0 0 3.5 17h13a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 16.5 3h-13Zm1 9.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5Zm0-2a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm0-2a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm0-2a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Z" />
-                </svg>
+            </svg>
                 Jenis Nilai
             </label>
             <select id="jenis" name="jenis" required
@@ -109,7 +126,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-gray-400">
                     <path d="M15.991 3.869a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75V3.869ZM15.25 5.5a.75.75 0 0 0 1.5 0v-.01a.75.75 0 0 0-1.5 0v.01ZM15.991 7.131a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75V7.131ZM15.25 8.75a.75.75 0 0 0 1.5 0v-.01a.75.75 0 0 0-1.5 0v.01ZM15.991 10.381a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75v-.01ZM15.25 12a.75.75 0 0 0 1.5 0v-.01a.75.75 0 0 0-1.5 0v.01ZM15.991 13.631a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75v-.01ZM15.25 15.25a.75.75 0 0 0 1.5 0v-.01a.75.75 0 0 0-1.5 0v.01ZM15.991 16.881a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75v-.01Z" />
                     <path d="M2 3.75C2 3.336 2.336 3 2.75 3h10.5C13.664 3 14 3.336 14 3.75v12.5c0 .414-.336.75-.75.75H2.75a.75.75 0 0 1-.75-.75V3.75ZM5 6.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5Zm0 3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5Zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4Z" />
-                </svg>
+            </svg>
                 Nilai
             </label>
             <input type="number" id="nilai" name="nilai" min="0" max="100" required
@@ -138,14 +155,76 @@
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxt3BlHk8JE4SlgZ8iX2qjzvWPglKTzXr6bBddsZoY-igWygF98AVPj_PoACgHzKsDf/exec";
     // --- PENTING ---
 
+    // --- DATA SISWA BARU ---
+    const dataSiswa = {
+        "X TSM 1": [
+            "Aditya Saputra", "Afri Lestiano", "Ahmad Fadil Khoirul Chakim", "Aries Tirta Putra Satriya",
+            "Dani Firmansyah", "Dimas Akbar Maulana", "Faby Fatansyah", "Fathir Zaerullah",
+            "Genial Banu Zaky", "Kiki Tri Wijaya", "Muhamad Fahri", "Muhammad Arhami",
+            "Muhammad Faturohman", "Muhammad Firmansyah", "Muhammad Rehan Atnaza", "Nabil Ibadurohman",
+            "Rendy Aditiya Saputra", "Sandi Musa Prayoga", "Satria Adit Pratama", "Tegar Iman Saputra",
+            "Vino Mersedi Ariyan", "Zaenal Arifin", "Faizar Okta Febriyanto"
+        ],
+        "X TSM 2": [
+            "Ainur Reza Widiyanto", "Chairul Zakky", "Daffa Adib Aulia", "Dava Arkananta",
+            "Dimas Adhitya", "Dimas Pramudiyanto Susilo", "Galih Rama Putra", "Hafiz Annafi Arzaq",
+            "Hanif Ubadilah", "Ilham Muszaimam", "Kevin Agus Widodo", "Lutvi Ahmad Avrizal",
+            "M. Ardin Setiawan", "Moh. Ridwan Maftu Alahna", "Muhammad Wahyu Fadhilah",
+            "Muhammad Zuhda Ramadhan", "Reno Arya Saputra", "Resky Natalio Saputra",
+            "Ridhwan Naufal Dzaki", "Slamet Catur Aji", "Unggul Handoko", "Vicky Fadil Abdillah",
+            "Terra Mahendra", "Muhammad Amirul Wildan", "M. Aldi Akbar Pratama"
+        ],
+        "X PSPT": [
+            "Amanda Nur Aini", "Angelina Kharisma Putri", "Bagus Setiawan", "Cici Ayu", "Dita Safitri",
+            "Dwi Cahya Ratnasari", "Eli Olivia Fitriyani", "Elvina Destiya Putri", "Evina Inasya",
+            "Faizah Arsyi", "Fajar Mutawa", "Fani Tri Hikmawan", "Fika Atha Apriliana", "Iqlimah Azzahraa",
+            "Kamilia Iftina Silvia", "Kiranti Widiya Pratiwi", "Muhamad Ibnu Afifan", "Muhammad Guntur Afrilleo",
+            "Muhammad Hilbram Rofi", "Muhammad Nabiel Al Habsyi", "Muhammad Ulin Nuha", "Nikmatul Maula",
+            "Nur Adam Harfiyanto", "Qiyamul Lail Nafilah", "Safira Wijayanti", "Sinar Marsya Putri Wungkana",
+            "Sinta Anggunita", "Siti Nurjanah", "Hafiz Ikhwansahara"
+        ]
+    };
+    // --- AKHIR DATA SISWA ---
+
     const form = document.getElementById('nilaiForm');
     const submitButton = document.getElementById('submitButton');
     const statusMessage = document.getElementById('statusMessage');
-
-    // --- TAMBAHAN SCRIPT ---
     const jenisDropdown = document.getElementById('jenis');
     const jenisLainnyaContainer = document.getElementById('jenisLainnyaContainer');
     const jenisLainnyaInput = document.getElementById('jenis_lainnya');
+
+    // --- SCRIPT DROPDOWN DINAMIS ---
+    const kelasSelect = document.getElementById('kelas');
+    const namaSelect = document.getElementById('nama');
+
+    kelasSelect.addEventListener('change', (e) => {
+        const selectedKelas = e.target.value;
+        
+        // 1. Kosongkan daftar nama siswa
+        namaSelect.innerHTML = '';
+        
+        // 2. Aktifkan dropdown nama
+        namaSelect.disabled = false;
+
+        // 3. Tambahkan opsi default "Pilih nama"
+        const defaultNamaOption = document.createElement('option');
+        defaultNamaOption.value = "";
+        defaultNamaOption.textContent = "Pilih nama siswa";
+        defaultNamaOption.disabled = true;
+        defaultNamaOption.selected = true;
+        namaSelect.appendChild(defaultNamaOption);
+
+        // 4. Isi dropdown nama dengan siswa dari kelas yang dipilih
+        if (dataSiswa[selectedKelas]) {
+            dataSiswa[selectedKelas].forEach(nama => {
+                const option = document.createElement('option');
+                option.value = nama;
+                option.textContent = nama;
+                namaSelect.appendChild(option);
+            });
+        }
+    });
+    // --- AKHIR SCRIPT DROPDOWN DINAMIS ---
 
     jenisDropdown.addEventListener('change', () => {
         if (jenisDropdown.value === 'Lainnya') {
@@ -157,12 +236,10 @@
             jenisLainnyaInput.value = ''; // Kosongkan nilainya jika tidak dipilih
         }
     });
-    // --- AKHIR TAMBAHAN SCRIPT ---
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Tampilkan status loading
         submitButton.disabled = true;
         submitButton.innerHTML = `
             <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -184,26 +261,25 @@
             const result = await response.json();
 
             if (result.status === 'success') {
-                // Tampilkan pesan sukses
                 statusMessage.textContent = result.message || 'Data berhasil dikirim!';
                 statusMessage.className = 'p-4 text-center rounded-lg bg-green-100 text-green-700';
-                form.reset(); // Kosongkan formulir
+                form.reset(); 
 
-                // Sembunyikan lagi kolom "Lainnya" setelah reset
+                // Reset dropdown nama ke kondisi awal
+                namaSelect.innerHTML = '<option value="" disabled selected>Pilih kelas terlebih dahulu</option>';
+                namaSelect.disabled = true;
+                
                 jenisLainnyaContainer.classList.add('hidden');
                 jenisLainnyaInput.required = false;
 
             } else {
-                // Tampilkan pesan error
                 throw new Error(result.message || 'Terjadi kesalahan.');
             }
 
         } catch (error) {
-            // Tangani error fetch atau error dari Apps Script
             statusMessage.textContent = `Error: ${error.message}`;
             statusMessage.className = 'p-4 text-center rounded-lg bg-red-100 text-red-700';
         } finally {
-            // Kembalikan tombol ke status normal
             submitButton.disabled = false;
             submitButton.innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2">
