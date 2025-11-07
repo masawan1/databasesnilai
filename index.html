@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale-1.0">
+<title>Formulir Input Nilai</title>
+<!-- Memuat Tailwind CSS -->
+<script src="https://www.google.com/search?q=https://cdn.tailwindcss.com"></script>
+<style>
+/* Menggunakan font Inter */
+body {
+font-family: 'Inter', sans-serif;
+}
+@import url('https://www.google.com/search?q=https://fonts.googleapis.com/css2%3Ffamily%3DInter:wght%40400%3B500%3B600%3B700%26display%3Dswap');
+</style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+<div class="w-full max-w-lg p-8 space-y-6 bg-white rounded-xl shadow-lg">
+    <h1 class="text-3xl font-bold text-center text-gray-800">Input Nilai Siswa</h1>
+    <p class="text-center text-gray-600">Data akan terkirim ke Google Sheets.</p>
+
+    <!-- Formulir Input -->
+    <form id="nilaiForm" class="space-y-6">
+        <div>
+            <label for="nama" class="block text-sm font-medium text-gray-700">Nama Siswa</label>
+            <!-- DIUBAH DARI INPUT MENJADI SELECT -->
+            <select id="nama" name="nama" required
+                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50">
+                <option value="" disabled selected>Pilih nama siswa</option>
+                
+                <!-- 
+                  PENTING: GANTI DAFTAR DI BAWAH INI DENGAN NAMA SISWA ANDA
+                -->
+                <option value="Budi Santoso">Budi Santoso</option>
+                <option value="Ani Wijaya">Ani Wijaya</option>
+                <option value="Citra Lestari">Citra Lestari</option>
+                <option value="Dewi Anggraini">Dewi Anggraini</option>
+                <option value="Eka Prasetyo">Eka Prasetyo</option>
+                <!-- Tambahkan <option value="Nama Siswa">Nama Siswa</option> sebanyak yang Anda butuh -->
+
+            </select>
+            <!-- AKHIR PERUBAHAN -->
+        </div>
+
+        <div>
+            <label for="mapel" class="block text-sm font-medium text-gray-700">Mata Pelajaran</label>
+            <input type="text" id="mapel" name="mapel" required
+                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50">
+        </div>
+
+        <!-- BLOK BARU UNTUK JENIS NILAI -->
+        <div>
+            <label for="jenis" class="block text-sm font-medium text-gray-700">Jenis Nilai</label>
+            <select id="jenis" name="jenis" required
+                    class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50">
+                <option value="" disabled selected>Pilih jenis nilai</option>
+                <option value="Ulangan Harian">Ulangan Harian</option>
+                <option value="Tugas">Tugas</option>
+                <option value="UTS">UTS (Ujian Tengah Semester)</option>
+                <option value="UAS">UAS (Ujian Akhir Semester)</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+        </div>
+        <!-- AKHIR BLOK BARU -->
+
+        <!-- BLOK BARU UNTUK INPUT "LAINNYA" -->
+        <div id="jenisLainnyaContainer" class="hidden">
+            <label for="jenis_lainnya" class="block text-sm font-medium text-gray-700">Sebutkan Jenis Nilai Lainnya:</label>
+            <input type="text" id="jenis_lainnya" name="jenis_lainnya"
+                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50">
+        </div>
+        <!-- AKHIR BLOK BARU -->
+
+        <div>
+            <label for="nilai" class="block text-sm font-medium text-gray-700">Nilai</label>
+            <input type="number" id="nilai" name="nilai" min="0" max="100" required
+                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50">
+        </div>
+
+        <div>
+            <button type="submit" id="submitButton"
+                    class="w-full px-4 py-2 font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-200 disabled:bg-gray-400">
+                Kirim Data
+            </button>
+        </div>
+    </form>
+
+    <!-- Pesan Status -->
+    <div id="statusMessage" class="hidden p-4 text-center rounded-lg"></div>
+</div>
+
+<script>
+    // --- PENTING ---
+    // URL Aplikasi Web Anda sudah dimasukkan di bawah ini
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxt3BlHk8JE4SlgZ8iX2qjzvWPglKTzXr6bBddsZoY-igWygF98AVPj_PoACgHzKsDf/exec";
+    // --- PENTING ---
+
+    const form = document.getElementById('nilaiForm');
+    const submitButton = document.getElementById('submitButton');
+    const statusMessage = document.getElementById('statusMessage');
+
+    // --- TAMBAHAN SCRIPT ---
+    const jenisDropdown = document.getElementById('jenis');
+    const jenisLainnyaContainer = document.getElementById('jenisLainnyaContainer');
+    const jenisLainnyaInput = document.getElementById('jenis_lainnya');
+
+    jenisDropdown.addEventListener('change', () => {
+        if (jenisDropdown.value === 'Lainnya') {
+            jenisLainnyaContainer.classList.remove('hidden');
+            jenisLainnyaInput.required = true;
+        } else {
+            jenisLainnyaContainer.classList.add('hidden');
+            jenisLainnyaInput.required = false;
+            jenisLainnyaInput.value = ''; // Kosongkan nilainya jika tidak dipilih
+        }
+    });
+    // --- AKHIR TAMBAHAN SCRIPT ---
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Tampilkan status loading
+        submitButton.disabled = true;
+        submitButton.textContent = 'Mengirim...';
+        statusMessage.classList.add('hidden');
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.status === 'success') {
+                // Tampilkan pesan sukses
+                statusMessage.textContent = result.message || 'Data berhasil dikirim!';
+                statusMessage.className = 'p-4 text-center rounded-lg bg-green-100 text-green-700';
+                form.reset(); // Kosongkan formulir
+
+                // Sembunyikan lagi kolom "Lainnya" setelah reset
+                jenisLainnyaContainer.classList.add('hidden');
+                jenisLainnyaInput.required = false;
+
+            } else {
+                // Tampilkan pesan error
+                throw new Error(result.message || 'Terjadi kesalahan.');
+            }
+
+        } catch (error) {
+            // Tangani error fetch atau error dari Apps Script
+            statusMessage.textContent = `Error: ${error.message}`;
+            statusMessage.className = 'p-4 text-center rounded-lg bg-red-100 text-red-700';
+        } finally {
+            // Kembalikan tombol ke status normal
+            submitButton.disabled = false;
+            submitButton.textContent = 'Kirim Data';
+            statusMessage.classList.remove('hidden');
+        }
+    });
+</script>
+
+
+</body>
+</html>
