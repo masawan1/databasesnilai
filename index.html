@@ -3,58 +3,85 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale-1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Formulir Input Nilai</title>
-<!-- Memuat Tailwind CSS -->
-<script src="https://www.google.com/search?q=https://cdn.tailwindcss.com"></script>
-<style>
-/* Menggunakan font Inter */
-body {
-font-family: 'Inter', sans-serif;
-}
-@import url('https://www.google.com/search?q=https://fonts.googleapis.com/css2%3Ffamily%3DInter:wght%40400%3B500%3B600%3B700%26display%3Dswap');
-</style>
-</head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-<div class="w-full max-w-lg p-8 space-y-6 bg-white rounded-xl shadow-lg">
-    <h1 class="text-3xl font-bold text-center text-gray-800">Input Nilai Siswa</h1>
-    <p class="text-center text-gray-600">Data akan terkirim ke Google Sheets.</p>
+<!-- LINK TAILWIND CSS YANG BENAR -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Memuat ikon Heroicons -->
+<script type="module" src="https://unpkg.com/heroicons@2.1.3/dist/solid/index.js"></script>
+
+<!-- LINK FONT YANG BENAR -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+</style>
+
+
+</head>
+<body class="bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 flex items-center justify-center min-h-screen p-4">
+
+<div class="w-full max-w-lg p-8 space-y-6 bg-white rounded-2xl shadow-xl border border-gray-200">
+    
+    <!-- Header dengan Ikon -->
+    <div class="flex flex-col items-center">
+        <div class="p-4 bg-blue-600 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-10 h-10">
+                <path fill-rule="evenodd" d="M11.47 2.47a.75.75 0 0 1 1.06 0l4.5 4.5a.75.75 0 0 1-1.06 1.06l-3.22-3.22V16.5a.75.75 0 0 1-1.5 0V4.81L8.03 8.03a.75.75 0 0 1-1.06-1.06l4.5-4.5ZM3 19.5a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <h1 class="text-3xl font-bold text-center text-gray-800 mt-4">Input Nilai Siswa</h1>
+        <p class="text-center text-gray-600">Data akan terkirim langsung ke Google Sheets.</p>
+    </div>
 
     <!-- Formulir Input -->
     <form id="nilaiForm" class="space-y-6">
+        
+        <!-- Nama Siswa -->
         <div>
-            <label for="nama" class="block text-sm font-medium text-gray-700">Nama Siswa</label>
-            <!-- DIUBAH DARI INPUT MENJADI SELECT -->
+            <label for="nama" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-gray-400">
+                    <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.25 1.25 0 0 0 1.065 2.007h10.94a1.25 1.25 0 0 0 1.065-2.007c-.03-.04-1.29-1.634-1.638-2.138a5.5 5.5 0 1 0-8.864 0c-.347.504-1.607 2.098-1.637 2.138Z" />
+                </svg>
+                Nama Siswa
+            </label>
             <select id="nama" name="nama" required
-                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50">
+                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50 transition-colors">
                 <option value="" disabled selected>Pilih nama siswa</option>
-                
-                <!-- 
-                  PENTING: GANTI DAFTAR DI BAWAH INI DENGAN NAMA SISWA ANDA
-                -->
                 <option value="Budi Santoso">Budi Santoso</option>
                 <option value="Ani Wijaya">Ani Wijaya</option>
                 <option value="Citra Lestari">Citra Lestari</option>
                 <option value="Dewi Anggraini">Dewi Anggraini</option>
                 <option value="Eka Prasetyo">Eka Prasetyo</option>
-                <!-- Tambahkan <option value="Nama Siswa">Nama Siswa</option> sebanyak yang Anda butuh -->
-
             </select>
-            <!-- AKHIR PERUBAHAN -->
         </div>
 
+        <!-- Mata Pelajaran -->
         <div>
-            <label for="mapel" class="block text-sm font-medium text-gray-700">Mata Pelajaran</label>
+            <label for="mapel" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-gray-400">
+                    <path d="M10.75 1.75a.75.75 0 0 0-1.5 0V2a.75.75 0 0 0 1.5 0V1.75ZM10 4.25a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0V5a.75.75 0 0 1 .75-.75ZM10 7a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0V7.75A.75.75 0 0 1 10 7Z" />
+                    <path fill-rule="evenodd" d="M12 1.75a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0V2.5a.75.75 0 0 1 .75-.75ZM14 3a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0V3.75A.75.75 0 0 1 14 3ZM8 1.75a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0V2.5A.75.75 0 0 1 8 1.75ZM6 3a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0V3.75A.75.75 0 0 1 6 3ZM5 4.75a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0V4.75ZM16.25 5a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75ZM17 7a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01A.75.75 0 0 1 17 7ZM16.25 9a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75ZM3.75 5a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5H4.5a.75.75 0 0 1-.75-.75ZM3 7a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 7ZM3.75 9a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5H4.5a.75.75 0 0 1-.75-.75ZM12 11.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM14 11.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM8 11.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM6 11.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM5 12.75a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5H5.75a.75.75 0 0 1-.75-.75ZM16.25 13a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75ZM17 15a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01A.75.75 0 0 1 17 15ZM16.25 17a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75ZM3.75 13a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5H4.5a.75.75 0 0 1-.75-.75ZM3 15a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 15ZM3.75 17a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5H4.5a.75.75 0 0 1-.75-.75ZM10 13.75a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0v-.01a.75.75 0 0 1 .75-.75ZM10 16.5a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0V17.25a.75.75 0 0 1 .75-.75ZM12 15.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM14 15.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM8 15.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM6 15.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM12 18.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM14 18.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM8 18.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM6 18.25a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01Z" clip-rule="evenodd" />
+                </svg>
+                Mata Pelajaran
+            </label>
             <input type="text" id="mapel" name="mapel" required
-                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50">
+                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50 transition-colors">
         </div>
 
-        <!-- BLOK BARU UNTUK JENIS NILAI -->
+        <!-- Jenis Nilai -->
         <div>
-            <label for="jenis" class="block text-sm font-medium text-gray-700">Jenis Nilai</label>
+            <label for="jenis" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-gray-400">
+                    <path d="M3.5 3A1.5 1.5 0 0 0 2 4.5v11A1.5 1.5 0 0 0 3.5 17h13a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 16.5 3h-13Zm1 9.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5Zm0-2a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm0-2a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm0-2a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Z" />
+                </svg>
+                Jenis Nilai
+            </label>
             <select id="jenis" name="jenis" required
-                    class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50">
+                    class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50 transition-colors">
                 <option value="" disabled selected>Pilih jenis nilai</option>
                 <option value="Ulangan Harian">Ulangan Harian</option>
                 <option value="Tugas">Tugas</option>
@@ -63,25 +90,39 @@ font-family: 'Inter', sans-serif;
                 <option value="Lainnya">Lainnya</option>
             </select>
         </div>
-        <!-- AKHIR BLOK BARU -->
-
-        <!-- BLOK BARU UNTUK INPUT "LAINNYA" -->
+        
+        <!-- Input "Lainnya" yang tersembunyi -->
         <div id="jenisLainnyaContainer" class="hidden">
-            <label for="jenis_lainnya" class="block text-sm font-medium text-gray-700">Sebutkan Jenis Nilai Lainnya:</label>
+            <label for="jenis_lainnya" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-gray-400">
+                    <path fill-rule="evenodd" d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z" clip-rule="evenodd" />
+                </svg>
+                Sebutkan Jenis Nilai Lainnya:
+            </label>
             <input type="text" id="jenis_lainnya" name="jenis_lainnya"
-                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50">
+                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50 transition-colors">
         </div>
-        <!-- AKHIR BLOK BARU -->
 
+        <!-- Nilai -->
         <div>
-            <label for="nilai" class="block text-sm font-medium text-gray-700">Nilai</label>
+            <label for="nilai" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-gray-400">
+                    <path d="M15.991 3.869a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75V3.869ZM15.25 5.5a.75.75 0 0 0 1.5 0v-.01a.75.75 0 0 0-1.5 0v.01ZM15.991 7.131a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75V7.131ZM15.25 8.75a.75.75 0 0 0 1.5 0v-.01a.75.75 0 0 0-1.5 0v.01ZM15.991 10.381a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75v-.01ZM15.25 12a.75.75 0 0 0 1.5 0v-.01a.75.75 0 0 0-1.5 0v.01ZM15.991 13.631a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75v-.01ZM15.25 15.25a.75.75 0 0 0 1.5 0v-.01a.75.75 0 0 0-1.5 0v.01ZM15.991 16.881a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75v-.01Z" />
+                    <path d="M2 3.75C2 3.336 2.336 3 2.75 3h10.5C13.664 3 14 3.336 14 3.75v12.5c0 .414-.336.75-.75.75H2.75a.75.75 0 0 1-.75-.75V3.75ZM5 6.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5Zm0 3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5Zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4Z" />
+                </svg>
+                Nilai
+            </label>
             <input type="number" id="nilai" name="nilai" min="0" max="100" required
-                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50">
+                   class="w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-50 transition-colors">
         </div>
 
+        <!-- Tombol Kirim -->
         <div>
             <button type="submit" id="submitButton"
-                    class="w-full px-4 py-2 font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-200 disabled:bg-gray-400">
+                    class="w-full flex justify-center items-center px-4 py-3 font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-200 transform hover:scale-105 disabled:bg-gray-400 disabled:from-gray-400 disabled:transform-none">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2">
+                    <path d="M3.105 3.106a.75.75 0 0 1 .814-.156L16.75 9.25a.75.75 0 0 1 0 1.5L3.92 17.05a.75.75 0 0 1-.97-.814l1.9-6.32a.75.75 0 0 0 0-.814L3.04 3.92A.75.75 0 0 1 3.105 3.106Z" />
+                </svg>
                 Kirim Data
             </button>
         </div>
@@ -123,7 +164,13 @@ font-family: 'Inter', sans-serif;
 
         // Tampilkan status loading
         submitButton.disabled = true;
-        submitButton.textContent = 'Mengirim...';
+        submitButton.innerHTML = `
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Mengirim...
+        `;
         statusMessage.classList.add('hidden');
 
         const formData = new FormData(form);
@@ -158,7 +205,12 @@ font-family: 'Inter', sans-serif;
         } finally {
             // Kembalikan tombol ke status normal
             submitButton.disabled = false;
-            submitButton.textContent = 'Kirim Data';
+            submitButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2">
+                    <path d="M3.105 3.106a.75.75 0 0 1 .814-.156L16.75 9.25a.75.75 0 0 1 0 1.5L3.92 17.05a.75.75 0 0 1-.97-.814l1.9-6.32a.75.75 0 0 0 0-.814L3.04 3.92A.75.75 0 0 1 3.105 3.106Z" />
+                </svg>
+                Kirim Data
+            `;
             statusMessage.classList.remove('hidden');
         }
     });
